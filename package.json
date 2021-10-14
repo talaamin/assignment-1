@@ -1,0 +1,23 @@
+{
+  "name": "assignment-1",
+  "version": "1.0.0",
+  "description": "UI tests for the first assignment",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talaamin/assignment-1.git"
+  },
+  "author": "Tala Qawasmi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/talaamin/assignment-1/issues"
+  },
+  "homepage": "https://github.com/talaamin/assignment-1#readme",
+  "dependencies": {
+    "cypress": "^8.6.0"
+  }
+}
