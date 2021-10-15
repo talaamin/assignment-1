@@ -3,17 +3,19 @@ import HomePage from '../support/pages/home-page';
 import ProductPage from '../support/pages/product-page';
 import CartPage from '../support/pages/cart-page';
 import LoginPage from '../support/pages/login-page';
+import CheckoutPage from '../support/pages/checkout-page';
 
 const homePage = new HomePage();
 const productPage = new ProductPage();
 const cartPage = new CartPage();
 const loginPage = new LoginPage();
-describe('To test the checkout process', () => {
+const checkoutPage = new CheckoutPage();
+describe('To test adding product to cart and checkout process', () => {
   before(() => {
     cy.visit('/');
   });
 
-  it('should select a mobile,configure it successfully', () => {
+  it('should select a mobile and configure it successfully', () => {
     homePage.selectMobile();
     productPage.assertProductIsShown();
     productPage.configureProductDetails();
@@ -24,12 +26,22 @@ describe('To test the checkout process', () => {
     productPage.clickOnAddToCartButton();
     cartPage.checkCartDetails();
     cartPage.checkPriceDetails();
-  });
-  it('should error messages when required fields are left empty in checkout', () => {
     cartPage.clickOnPayButton();
     loginPage.clickOnContinueAsGuestButton();
   });
-  after(() => {
-    cartPage.clearCart({ multiple: true });
+
+  it('should error messages when required fields are left empty in checkout form', () => {
+    checkoutPage.clickOnFirstNameField();
+    checkoutPage.clickOnLastNameField();
+    checkoutPage.clickOnAddressLineField();
+    checkoutPage.clickOnPinCodeField();
+    checkoutPage.clickOnMobileNumberField();
+    checkoutPage.clickOnEmailField();
+    checkoutPage.clickOnLandmarkField();
+    checkoutPage.checkErrorMessage();
+  });
+  it('should disappear all error messages when adding required information in checkout form', () => {
+    checkoutPage.fillCheckOutForm();
+    checkoutPage.checkErrorMessagesAreNotShowing();
   });
 });

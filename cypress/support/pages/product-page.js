@@ -18,6 +18,7 @@ export default class ProductPage {
     cy.get(OPTION_SELECTOR_MAIN_TEXT).contains(productDetails.chooseYourDevice).click({ force: true });
   }
 
+  // This function checks the product summary details
   checkProductDetails() {
     cy.get(PRODUCT_SUMMARY_NAME).should('contain', productDetails.productName);
     cy.get(PRODUCT_SUMMARY_OPTIONS)
@@ -26,6 +27,7 @@ export default class ProductPage {
       .and('contain', productDetails.chooseYourRAM)
       .and('contain', productDetails.chooseYourColor);
   }
+  // This function clicks on add to cart button
   clickOnAddToCartButton() {
     cy.get(ADD_TO_CART_BUTTON).click({ force: true });
   }

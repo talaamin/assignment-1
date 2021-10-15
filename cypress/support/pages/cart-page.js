@@ -18,7 +18,8 @@ export default class CartPage {
 
   // This function clears the cart
   clearCart() {
-    cy.get(DELETE_PRODUCT_BUTTON).click();
+    cy.get('.gnb__mobile-menu').find('[an-la="cart"]').click();
+    cy.get(DELETE_PRODUCT_BUTTON).click({ multiple: true });
   }
 
   clickOnPayButton() {
