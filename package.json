@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/talaamin/assignment-1#readme",
   "dependencies": {
-    "cypress": "^8.6.0"
+    "cypress": "^8.6.0",
+    "eslint": "^8.0.1",
+    "prettier": "^2.4.1"
   }
 }
