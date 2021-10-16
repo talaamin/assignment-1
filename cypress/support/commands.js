@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// This command intercepts the buy product page in order to avoid element detachd from DOM error
+Cypress.Commands.add('interceptBuyPage', () => {
+  let currentURL;
+  cy.url().then(url => {
+    currentURL = url;
+  });
+  cy.then(() => cy.intercept(currentURL)).as('productDetails');
+  cy.then(() => cy.visit(currentURL));
+  cy.wait('@productDetails');
+});

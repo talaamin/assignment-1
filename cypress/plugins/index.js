@@ -17,6 +17,14 @@
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
+  on('before:browser:launch', (browser, launchOptions) => {
+    if (browser.name === 'chrome') {
+      // launch chrome using incognito
+      launchOptions.args.push(' --incognito');
+    }
+
+    return launchOptions;
+  });
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-}
+};
